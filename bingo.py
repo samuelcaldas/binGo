@@ -38,12 +38,14 @@ def show_files(folder):
             # Get the relative path of the file
             relative_path = os.path.relpath(file, folder)
             # Append the file path to the output with markdown formatting
-            output += f"- ./{relative_path}\n"
+            output += f" - .\{relative_path}: <br>"
             # Open the file and read its content
-            with open(file, "r") as f:
+            with open(file, "r", encoding='utf-8-sig') as f:
                 content = f.read()
+                # Replace the line breaks (\n) with <br>
+                content = content.replace("\n", "<br>")
             # Append the file content to the output with markdown formatting
-            output += f"```{file[-2:]}\n{content}\n```\n"
+            output += f"```{file[-2:]}<br>{content}<br>```<br>"
         # Return the output as a response
         return output
     # If the folder does not exist, return an error message
