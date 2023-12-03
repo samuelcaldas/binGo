@@ -38,15 +38,17 @@ def show_files(folder):
             # Get the relative path of the file
             relative_path = os.path.relpath(file, folder)
             # Append the file path to the output with markdown formatting
-            output += f"<p>.\{relative_path}: <br>"
+            output += f"<p>.\{relative_path} : <br>"
             # Open the file and read its content
             with open(file, "r", encoding='utf-8-sig') as f:
                 content = f.read()
                 # Replace the line breaks (\n) with <br>
-                content = content.replace("\n", " <br> ")
+                #content = content.replace("\n", " <br> ")
             extension = os.path.splitext(file)[1][1:]
             # Append the file content to the output with markdown formatting
-            output += f"```{extension}<br>{content}<br>```<br></p>"
+            output += f"```{extension}<br>"
+            output += f"<xmp>{content}</xmp>"
+            output += f"<br>```<br></p>"
         output += "</font></body></html>"
         # Return the output as a response
         return output
