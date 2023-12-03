@@ -14,7 +14,7 @@ def list_files(folder):
         # Get the full path of the item
         path = os.path.join(folder, item)
         # If the item is a file and has .cs or .xml extension, append it to the list
-        if os.path.isfile(path) and (path.endswith(".cs") or path.endswith(".xml")):
+        if os.path.isfile(path) and (path.endswith(".cs") or path.endswith(".xml") or path.endswith(".xaml") or path.endswith(".md") or path.endswith(".py")):
             files.append(path)
         # If the item is a directory, call the function recursively and extend the list
         elif os.path.isdir(path):
@@ -32,20 +32,22 @@ def show_files(folder):
         # Get the list of files in the folder and its subfolders
         files = list_files(folder)
         # Initialize an empty string to store the output
-        output = ""
+        output = "<!DOCTYPE html><html><body bgcolor='#000000'><font color='#FFFFFF' face='Courier New'>"
         # Loop through each file
         for file in files:
             # Get the relative path of the file
             relative_path = os.path.relpath(file, folder)
             # Append the file path to the output with markdown formatting
-            output += f" - .\{relative_path}: <br>"
+            output += f"<p>.\{relative_path}: <br>"
             # Open the file and read its content
             with open(file, "r", encoding='utf-8-sig') as f:
                 content = f.read()
                 # Replace the line breaks (\n) with <br>
-                content = content.replace("\n", "<br>")
+                content = content.replace("\n", " <br> ")
+            extension = os.path.splitext(file)[1][1:]
             # Append the file content to the output with markdown formatting
-            output += f"```{file[-2:]}<br>{content}<br>```<br>"
+            output += f"```{extension}<br>{content}<br>```<br></p>"
+        output += "</font></body></html>"
         # Return the output as a response
         return output
     # If the folder does not exist, return an error message
