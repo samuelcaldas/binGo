@@ -37,6 +37,12 @@ def show_files(folder):
         files = list_files(folder, file_types, exclude_folders)
         # Initialize an string to store the output
         output = "<!DOCTYPE html><html>"
+        
+        # CSS for syntax highlighting
+        #output += "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css'>"
+        # Javascript for syntax highlighting
+        #output += "<script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js'></script>"
+
         # CSS Style for the output
         #output += "<style>body {font-family: 'Courier New';} h3 {color: #00FF00;} h4 {color: #FF0000;} p {color: #FFFFFF;}</style>"
         output += "<style>body {font-family: Courier New; background-color: #000000; color: #FFFFFF;} h3 {color: #00FF00;} h4 {color: #FF0000;} p {color: #FFFFFF;} xmp {color: #FFFFFF;}</style>"
