@@ -36,8 +36,12 @@ def show_files(folder):
         # Get the list of files in the folder and its subfolders that match the file types and exclude the folders
         files = list_files(folder, file_types, exclude_folders)
         # Initialize an string to store the output
-        output = "<!DOCTYPE html><html><body bgcolor='#000000'>"
-        output += "<font color='#FFFFFF' face='Courier New'>"
+        output = "<!DOCTYPE html><html>"
+        # CSS Style for the output
+        #output += "<style>body {font-family: 'Courier New';} h3 {color: #00FF00;} h4 {color: #FF0000;} p {color: #FFFFFF;}</style>"
+        output += "<style>body {font-family: Courier New; background-color: #000000; color: #FFFFFF;} h3 {color: #00FF00;} h4 {color: #FF0000;} p {color: #FFFFFF;} xmp {color: #FFFFFF;}</style>"
+        
+        output += "<body>"
         output += f"<h3>{folder} :</h3>"
         # Loop through each file
         for file in files:
@@ -52,10 +56,12 @@ def show_files(folder):
             # Append the file content to the output with markdown formatting
             output += "<p>"
             output += f"```{extension}"
-            output += f"<xmp>{content}</xmp>"
+            output += "<xmp>"
+            output += f"{content}"
+            output += "</xmp>"
             output += "```"
             output += "</p>"
-        output += "</font></body></html>"
+        output += "</body></html>"
         # Return the output as a response
         return output
     # If the folder does not exist, return an error message
