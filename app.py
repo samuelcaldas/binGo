@@ -35,27 +35,33 @@ def show_files(folder):
         exclude_folders = [".git", ".vscode", "__pycache__", "bin", "obj", "packages", "Properties", "Resources", "Resources.Designer.cs", "Settings", "Settings.Designer.cs", "Service References"]
         # Get the list of files in the folder and its subfolders that match the file types and exclude the folders
         files = list_files(folder, file_types, exclude_folders)
-        # Initialize an empty string to store the output
-        output = "<!DOCTYPE html><html><body bgcolor='#000000'><font color='#FFFFFF' face='Courier New'>"
+        # Initialize an string to store the output
+        output = "<!DOCTYPE html><html><body bgcolor='#000000'>"
+        output += "<font color='#FFFFFF' face='Courier New'>"
+        output += f"<h3>{folder} :</h3>"
         # Loop through each file
         for file in files:
             # Get the relative path of the file
             relative_path = os.path.relpath(file, folder)
             # Append the file path to the output with markdown formatting
-            output += f"<p>.\{relative_path} : <br>"
+            output += f"<H4>.\{relative_path} :</H4>"
             # Open the file and read its content
             with open(file, "r", encoding='utf-8-sig') as f:
                 content = f.read()
-                # Replace the line breaks (\n) with <br>
-                #content = content.replace("\n", " <br> ")
             extension = os.path.splitext(file)[1][1:]
             # Append the file content to the output with markdown formatting
+            output += "<p>"
             output += f"```{extension}"
             output += f"<xmp>{content}</xmp>"
-            output += f"```<br></p>"
+            output += "```"
+            output += "</p>"
         output += "</font></body></html>"
         # Return the output as a response
         return output
     # If the folder does not exist, return an error message
     else:
-        return "Invalid folder address. Please enter a valid folder address."
+        return "<H1>Invalid folder address. Please enter a valid folder address.</H1>"
+# Return an error if route is blank
+@app.route("/")
+def error():
+    return "<H1>Please enter a folder address.</H1>"
