@@ -1,5 +1,5 @@
 body {
-    font-family: Courier New;
+    font-family: 'Courier New', Courier, monospace;
     background-color: #000000;
     color: #FFFFFF;
 }
@@ -9,7 +9,11 @@ h3 {
 }
 
 h4 {
-    color: #FF0000;
+    color: #FF0000; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-style: italic;
 }
 
 p {
