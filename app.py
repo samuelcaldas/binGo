@@ -30,11 +30,14 @@ def show_files(folder):
     # Check if the folder exists
     if os.path.exists(folder) and os.path.isdir(folder):
         # Define the file types to include
-        file_types = [".cs", ".xaml", ".md", ".py"]
+        file_types = [".cs", ".xaml", ".md", ".py", ".rst"]
+
         # Define the folders to exclude
         exclude_folders = [".git", ".vscode", "__pycache__", "bin", "obj", "packages", "Properties", "Resources", "Resources.Designer.cs", "Settings", "Settings.Designer.cs", "Service References"]
+        
         # Get the list of files in the folder and its subfolders that match the file types and exclude the folders
         files = list_files(folder, file_types, exclude_folders)
+        
         # Initialize an string to store the output
         output = "<!DOCTYPE html><html>"
         
