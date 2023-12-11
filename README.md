@@ -1,6 +1,6 @@
-# Bingo
+# binGo
 
-Bingo is a Flask app that allows you to browse and view the files in your local folders using Microsoft Edge browser and Copilot.
+binGo is a Flask app that allows you to browse and view the files in your local folders using Microsoft Edge browser and Copilot.
 
 ## Features
 
@@ -10,7 +10,7 @@ Bingo is a Flask app that allows you to browse and view the files in your local 
 
 ## Installation
 
-To install Bingo, you need to have Python 3.8 or higher and Flask 2.0 or higher on your computer. You can install Flask using pip:
+To install binGo, you need to have Python 3.8 or higher and Flask 2.0 or higher on your computer. You can install Flask using pip:
 
 ```bash
 pip install Flask
@@ -20,7 +20,7 @@ Then, you need to clone this repository or download the app.py file to your comp
 
 ## Usage
 
-To use Bingo, you need to run the app.py file using Flask on app folder:
+To use binGo, you need to run the app.py file using Flask on app folder:
 
 ```bash
 flask run
@@ -32,12 +32,12 @@ This will start a local server on port 5000. You can then open Microsoft Edge br
 http://localhost:5000/<path:folder>
 ```
 
-where `<path:folder>` is the relative or absolute path of the folder you want to browse. For example, if you want to browse the folder C:\Users\UserName\source\repos\bingo, you can go to:
+where `<path:folder>` is the relative or absolute path of the folder you want to browse. For example, if you want to browse the folder C:\Users\UserName\source\repos\binGo, you can go to:
 
 ```text
-http://localhost:5000/C:/Users/UserName/source/repos/bingo
+http://localhost:5000/C:/Users/UserName/source/repos/binGo
 ```
 
 You will see the list of files in the folder and its subfolders that match the file types and exclude the folders defined in the app.py file. You can click on any file to view its content with markdown formatting and syntax highlighting.
 
-You can also use Copilot to search for files in your folder using natural language queries. For example, you can ask Copilot to show you the files that contain the word "bingo" or the files that are written in Python. Copilot will try to understand your query and show you the relevant files.
+You can also use Copilot to search for files in your folder using natural language queries. For example, you can ask Copilot to show you the files that contain the word "binGo" or the files that are written in Python. Copilot will try to understand your query and show you the relevant files.
