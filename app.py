@@ -40,14 +40,8 @@ def show_files(folder):
         
         # Initialize an string to store the output
         output = "<!DOCTYPE html><html>"
-        
-        # CSS for syntax highlighting
-        #output += "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css'>"
-        # Javascript for syntax highlighting
-        #output += "<script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js'></script>"
 
         # CSS Style for the output
-        #output += "<style>body {font-family: 'Courier New';} h3 {color: #00FF00;} h4 {color: #FF0000;} p {color: #FFFFFF;}</style>"
         output += "<link rel='stylesheet' href='/static/style.css'>"
         
         output += "<body>"
@@ -56,6 +50,7 @@ def show_files(folder):
         for file in files:
             # Get the relative path of the file
             relative_path = os.path.relpath(file, folder)
+            output += "<hr>"
             # Append the file path to the output with markdown formatting
             output += f"<H4>.\{relative_path} :</H4>"
             # Open the file and read its content
@@ -63,13 +58,9 @@ def show_files(folder):
                 content = f.read()
             extension = os.path.splitext(file)[1][1:]
             # Append the file content to the output with markdown formatting
-            #output += "<p>"
-            output += f"```{extension}"
-            output += "<xmp>"
-            output += f"{content}"
-            output += "</xmp>"
-            output += "```"
-            #output += "</p>"
+            output += f"<code>```{extension}"
+            output += f"<xmp>{content}</xmp>"
+            output += "```</code>"
         output += "</body></html>"
         # Return the output as a response
         return output
