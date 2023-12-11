@@ -48,7 +48,7 @@ def show_files(folder):
 
         # CSS Style for the output
         #output += "<style>body {font-family: 'Courier New';} h3 {color: #00FF00;} h4 {color: #FF0000;} p {color: #FFFFFF;}</style>"
-        output += "<style>body {font-family: Courier New; background-color: #000000; color: #FFFFFF;} h3 {color: #00FF00;} h4 {color: #FF0000;} p {color: #FFFFFF;} xmp {color: #FFFFFF;}</style>"
+        output += "<link rel='stylesheet' href='/static/style.css'>"
         
         output += "<body>"
         output += f"<h3>{folder} :</h3>"
@@ -63,13 +63,13 @@ def show_files(folder):
                 content = f.read()
             extension = os.path.splitext(file)[1][1:]
             # Append the file content to the output with markdown formatting
-            output += "<p>"
+            #output += "<p>"
             output += f"```{extension}"
             output += "<xmp>"
             output += f"{content}"
             output += "</xmp>"
             output += "```"
-            output += "</p>"
+            #output += "</p>"
         output += "</body></html>"
         # Return the output as a response
         return output
