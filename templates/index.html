@@ -20,16 +20,16 @@
         <div class="jumbotron mt-4">
             <h1 class="display-4">binGo</h1>
             <p class="lead">A Flask app that allows you to browse and view the files in your local folders using Microsoft Edge browser and Copilot.</p>
-            <hr class="my-4">
             <p class="h3">{{ folder }}</p>
+            <hr class="my-4">
         </div>
         <!-- Use a list group component to display the files -->
         <div class="list-group">
             <!-- Loop through each file data -->
-            {% for extension, content in files_data %}
-            <!-- Use a list group item component with a collapse toggle to display the file extension and content -->
+            {% for relative_path, extension, content in files_data %}
+            <!-- Use a list group item component with a collapse toggle to display the file relative path, extension and content -->
             <div class="list-group-item list-group-item-action" data-toggle="collapse" data-target="#{{ loop.index }}">
-                <h4 class="mb-0">{{ extension }}</h4>
+                <h4 class="mb-0">{{ relative_path }} ({{ extension }})</h4>
             </div>
             <div class="collapse" id="{{ loop.index }}">
                 <div class="card card-body">
