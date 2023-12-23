@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>binGo</title>
+    <!-- Link to bootstrap cdn -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+    <!-- Enable dark mode -->
+    <style>
+        body {
+            background-color: #212529;
+            color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-4 text-center my-4">binGo</h1>
+        <h3 class="text-center">{{ folder }}</h3>
+        <!-- Create an accordion to display the files -->
+        <div class="accordion" id="files">
+            {% for line in output.split('\n') %}
+                {% if line.startswith('.') %}
+                    <!-- Create a card for each file -->
+                    <div class="card">
+                        <div class="card-header" id="{{ loop.index }}">
+                            <h4 class="mb-0">
+                                <!-- Create a button to toggle the file content -->
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ loop.index }}" aria-expanded="true" aria-controls="collapse{{ loop.index }}">
+                                    {{ line }}
+                                </button>
+                            </h4>
+                        </div>
+                        <div id="collapse{{ loop.index }}" class="collapse" aria-labelledby="{{ loop.index }}" data-parent="#files">
+                            <div class="card-body">
+                {% elif line.startswith('```') %}
+                    <!-- Create a code block with syntax highlighting -->
+                    <pre><code class="{{ line[3:] }}">{{ line[3:] }}
+                {% elif line == '' %}
+                    </code></pre>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    {{ line }}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Link to bootstrap cdn scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
