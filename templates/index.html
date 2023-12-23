@@ -2,53 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>binGo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Link to bootstrap cdn -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
-    <!-- Enable dark mode -->
+    <!-- Use dark mode from bootstrap -->
     <style>
         body {
             background-color: #212529;
             color: #f8f9fa;
         }
     </style>
+    <title>binGo</title>
 </head>
 <body>
     <div class="container">
-        <h1 class="display-4 text-center my-4">binGo</h1>
-        <h3 class="text-center">{{ folder }}</h3>
-        <!-- Create an accordion to display the files -->
-        <div class="accordion" id="files">
-            {% for line in output.split('\n') %}
-                {% if line.startswith('.') %}
-                    <!-- Create a card for each file -->
-                    <div class="card">
-                        <div class="card-header" id="{{ loop.index }}">
-                            <h4 class="mb-0">
-                                <!-- Create a button to toggle the file content -->
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ loop.index }}" aria-expanded="true" aria-controls="collapse{{ loop.index }}">
-                                    {{ line }}
-                                </button>
-                            </h4>
-                        </div>
-                        <div id="collapse{{ loop.index }}" class="collapse" aria-labelledby="{{ loop.index }}" data-parent="#files">
-                            <div class="card-body">
-                {% elif line.startswith('```') %}
-                    <!-- Create a code block with syntax highlighting -->
-                    <pre><code class="{{ line[3:] }}">{{ line[3:] }}
-                {% elif line == '' %}
-                    </code></pre>
-                            </div>
-                        </div>
-                    </div>
-                {% else %}
-                    {{ line }}
-                {% endif %}
+        <!-- Use a jumbotron component to display the folder name -->
+        <div class="jumbotron mt-4">
+            <h1 class="display-4">binGo</h1>
+            <p class="lead">A Flask app that allows you to browse and view the files in your local folders using Microsoft Edge browser and Copilot.</p>
+            <hr class="my-4">
+            <p class="h3">{{ folder }}</p>
+        </div>
+        <!-- Use a list group component to display the files -->
+        <div class="list-group">
+            <!-- Loop through each file data -->
+            {% for extension, content in files_data %}
+            <!-- Use a list group item component with a collapse toggle to display the file extension and content -->
+            <div class="list-group-item list-group-item-action" data-toggle="collapse" data-target="#{{ loop.index }}">
+                <h4 class="mb-0">{{ extension }}</h4>
+            </div>
+            <div class="collapse" id="{{ loop.index }}">
+                <div class="card card-body">
+                    <!-- Use a code block component with syntax highlighting to display the file content -->
+                    <pre><code class="{{ extension }}">{{ content }}</code></pre>
+                </div>
+            </div>
             {% endfor %}
         </div>
     </div>
-    <!-- Link to bootstrap cdn scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Link to bootstrap cdn js bundle -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
