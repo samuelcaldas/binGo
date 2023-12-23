@@ -1,9 +1,9 @@
 # Import flask and os modules
-from flask import Flask, request
+from flask import Flask, request, render_template
 import os
 
 # Create an app instance with the name bingo
-app = Flask("bingo")
+app = Flask("binGo")
 
 # Define a function that recursively lists all files in a given folder that match the given file types and exclude the given folders
 def list_files(folder, file_types, exclude_folders):
@@ -38,35 +38,29 @@ def show_files(folder):
         # Get the list of files in the folder and its subfolders that match the file types and exclude the folders
         files = list_files(folder, file_types, exclude_folders)
         
-        # Initialize an string to store the output
-        output = "<!DOCTYPE html><html>"
-
-        # CSS Style for the output
-        output += "<link rel='stylesheet' href='/static/style.css'>"
-        
-        output += "<body>"
-        output += f"<h3>{folder} :</h3>"
+        # Initialize an empty list to store the file extensions and contents
+        files_data = []
         # Loop through each file
         for file in files:
             # Get the relative path of the file
             relative_path = os.path.relpath(file, folder)
-            output += "<hr>"
-            # Append the file path to the output with markdown formatting
-            output += f"<H4>.\{relative_path} :</H4>"
+            
             # Open the file and read its content
             with open(file, "r", encoding='utf-8-sig') as f:
                 content = f.read()
+            
+            # Get the extension of the file
             extension = os.path.splitext(file)[1][1:]
-            # Append the file content to the output with markdown formatting
-            output += f"<code>```{extension}"
-            output += f"<xmp>{content}</xmp>"
-            output += "```</code>"
-        output += "</body></html>"
-        # Return the output as a response
-        return output
+            
+            # Append the file relative path, extension and content to the list
+            files_data.append((relative_path, extension, content))
+
+        # Render the index template with the folder and files data
+        return render_template("index.html", folder=folder, files_data=files_data)
     # If the folder does not exist, return an error message
     else:
         return "<H1>Invalid folder address. Please enter a valid folder address.</H1>"
+
 # Return an error if route is blank
 @app.route("/")
 def error():
