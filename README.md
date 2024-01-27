@@ -20,22 +20,22 @@ Then, you need to clone this repository or download the app.py file to your comp
 
 ## Usage
 
-To use binGo, you need to run the app.py file using Flask on app folder:
+To use binGo, you need to run the run_binGo.cmd file on app folder:
 
 ```bash
-flask run
+.\run_binGo.cmd
 ```
 
-This will start a local server on port 5000. You can then open Microsoft Edge browser and go to the following address:
+This will start a local server on port 80. You can then open Microsoft Edge browser and go to the following address:
 
 ```text
-http://localhost:5000/<path:folder>
+http://localhost/<path:folder>
 ```
 
 where `<path:folder>` is the relative or absolute path of the folder you want to browse. For example, if you want to browse the folder C:\Users\UserName\source\repos\binGo, you can go to:
 
 ```text
-http://localhost:5000/C:/Users/UserName/source/repos/binGo
+http://localhost/C:/Users/UserName/source/repos/binGo
 ```
 
 You will see the list of files in the folder and its subfolders that match the file types and exclude the folders defined in the app.py file. You can click on any file to view its content with markdown formatting and syntax highlighting.
