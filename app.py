@@ -1,6 +1,10 @@
-# Import flask and os modules
 from flask import Flask, request, render_template
 import os
+import json
+
+# Define the paths to the config files
+file_types_file = "config/file_types.json"
+exclude_folders_file = "config/exclude_folders.json"
 
 # Create an app instance with the name bingo
 app = Flask("binGo")
@@ -29,11 +33,13 @@ def show_files(folder):
     folder = os.path.abspath(folder)
     # Check if the folder exists
     if os.path.exists(folder) and os.path.isdir(folder):
-        # Define the file types to include
-        file_types = [".cs", ".xaml", ".md", ".py", ".rst", ".css", ".js", ".htm", ".html"]
+        # Read the file types file and parse it to a list
+        with open(file_types_file, "r") as f:
+            file_types = json.load(f)
 
-        # Define the folders to exclude
-        exclude_folders = [".git", ".vscode", "__pycache__", "bin", "obj", "packages", "Properties", "Resources", "Resources.Designer.cs", "Settings", "Settings.Designer.cs", "Service References"]
+        # Read the exclude folders file and parse it to a list
+        with open(exclude_folders_file, "r") as f:
+            exclude_folders = json.load(f)
         
         # Get the list of files in the folder and its subfolders that match the file types and exclude the folders
         files = list_files(folder, file_types, exclude_folders)

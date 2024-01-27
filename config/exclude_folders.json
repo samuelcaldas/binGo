@@ -1,0 +1,14 @@
+[
+    ".git",
+    ".vscode",
+    "__pycache__",
+    "bin",
+    "obj",
+    "packages",
+    "Properties",
+    "Resources",
+    "Resources.Designer.cs",
+    "Settings",
+    "Settings.Designer.cs",
+    "Service References"
+]
