@@ -12,7 +12,7 @@
     <!-- emoji favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text x='-3' y='25' font-size='29'>😀</text></svg>">
     <!-- Link to style.css file -->
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 
 <body class="d-flex align-items-center justify-content-center bg-body-tertiary">
@@ -38,10 +38,12 @@
         </ul>
     </div>
     <!-- Use an svg icon as a floating button to go back to the top of the page -->
-    <a href="#" class="back-to-top">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zM4.646 7.854a.5.5 0 0 1 .708 0L8 10.207l2.646-2.353a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
-            <path fill-rule="evenodd" d="M8 4.5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5z" />
+    <a href="#" style="position: fixed; bottom: 20px; right: 20px;" onclick="window.scrollTo(0, 0);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+            <path
+                d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zm.5 4.5a.5.5 0 0 0-1 0V9.293L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 
+                0 0 0 .708 0l3-3a.5.5 0 1 0-.708-.708L8.5
+                9.293V4.5z" />
         </svg>
     </a>
 </body>
