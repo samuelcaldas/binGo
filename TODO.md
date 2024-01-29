@@ -1,0 +1,3 @@
+- Incluir um botão pra voltar ao topo.
+- Incluir opção de reload automático.
+- Incluir página de configurações.
