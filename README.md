@@ -1,43 +1,44 @@
 # binGo
 
-binGo is a Flask app that allows you to browse and view the files in your local folders using Microsoft Edge browser and Copilot.
+binGo is a free, open-source Flask application designed to enhance your programming experience by leveraging the power of GPT as a coding assistant. It provides a user-friendly interface to interact with GPT, which acts as a virtual copilot, guiding you through code-related queries and aiding in the development process.
 
 ## Features
 
-- **List files**: You can see the list of files in any folder on your computer that match the specified file types and exclude the specified folders.
-- **View files**: You can view the content of any file in the list with markdown formatting and syntax highlighting.
-- **Search files**: You can use Copilot to search for files in your folder using natural language queries.
+- **GPT Integration**: Utilize the advanced capabilities of GPT to get coding assistance, explanations, and suggestions directly within the app.
+- **Code Assistance**: Whether you're debugging or looking for code optimization, binGo's integration with GPT can provide valuable insights.
+- **Enhanced Productivity**: Streamline your coding workflow with an AI companion that understands your programming needs.
+- **Natural Language Queries**: Simply describe what you need in plain English, and binGo will provide the relevant code snippets.
+- **Learning Tool**: Use binGo as a learning aid to understand new libraries or frameworks.
 
 ## Installation
 
-To install binGo, you need to have Python 3.8 or higher and Flask 2.0 or higher on your computer. You can install Flask using pip:
+To install binGo, ensure you have Python 3.8 or higher and Flask 2.0 or higher. Install Flask using pip:
 
 ```bash
 pip install Flask
 ```
 
-Then, you need to clone this repository or download the app.py file to your computer.
+Clone this repository or download the `app.py` file to your computer.
 
 ## Usage
 
-To use binGo, you need to run the run_binGo.cmd file on app folder:
+To use binGo, run the `run_binGo.cmd` file in the app folder:
 
 ```bash
 .\run_binGo.cmd
 ```
 
-This will start a local server on port 80. You can then open Microsoft Edge browser and go to the following address:
+This starts a local server on port 80. Open Microsoft Edge browser and navigate to:
 
 ```text
 http://localhost/<path:folder>
 ```
 
-where `<path:folder>` is the relative or absolute path of the folder you want to browse. For example, if you want to browse the folder C:\Users\UserName\source\repos\binGo, you can go to:
+Replace `<path:folder>` with the path of the folder you want to browse. For example, if you want to browse the folder C:\Users\UserName\source\repos\binGo, you can go to:
 
 ```text
 http://localhost/C:/Users/UserName/source/repos/binGo
 ```
 
-You will see the list of files in the folder and its subfolders that match the file types and exclude the folders defined in the app.py file. You can click on any file to view its content with markdown formatting and syntax highlighting.
 
-You can also use Copilot to search for files in your folder using natural language queries. For example, you can ask Copilot to show you the files that contain the word "binGo" or the files that are written in Python. Copilot will try to understand your query and show you the relevant files.
+Enjoy a free and more productive coding session with binGo and GPT-powered AI assistance!
